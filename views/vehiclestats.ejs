@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+
+<div class="jumbotron centered">
+  <div class="container">
+    <i class="fas fa-car fa-6x"></i>
+    <p>Hello <%=email%></p>
+    <h1 class="display-3">Vehicle Statistics</h1>
+    <div id="container" class="statistics">
+
+    </div>
+
+    <hr>
+
+    <div class="buttons">
+      <a class="btn btn-dark btn-lg b" href="/captureImage" role="button">Capture image</a>
+      <a class="btn btn-dark btn-lg b" href="/map" role="button">View Location on map</a>
+      <a class="btn btn-dark btn-lg b" href="/doorConfirm" role="button">Lock/unlock Door</a>
+      <a class="btn btn-dark btn-lg b" href="/engineConfirm" role="button">Lock/unlock Engine</a>
+      <a class="btn btn-dark btn-lg b" href="/logout" role="button">Log Out</a>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/vehiclestats.js"></script>
+<%- include('partials/footer') %>
