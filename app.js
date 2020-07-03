@@ -27,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://omeizaProjectsApp:skippy24*@cluster0-hgsfo.mongodb.net/IoTVTS", {
+mongoose.connect("mongodb+srv://<yourMongoDB>projectname:<yourPassword>@cluster0-hgsfo.mongodb.net/<yourCollectionName>", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -56,10 +56,10 @@ passport.deserializeUser(function(id, done) {
 });
 
 const firebase = require('firebase-admin');
-const serviceAccount = require("./iot-vehicle-tracking-system-firebase-adminsdk-1d6fg-cd30d21641.json");
+const serviceAccount = require("./yourfirebaseProjectJsonfile.json"); //Get your Json file from firebase and insert in the root directory of project. Firebase's Realtime database was used
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
-  databaseURL: "https://iot-vehicle-tracking-system.firebaseio.com",
+  databaseURL: "https://yourFirebaseProjectNamefirebaseio.com",
 });
 const db = firebase.database();
 let ref = db.ref("test/testConditions");
@@ -95,11 +95,11 @@ function refsToRun() {
 }
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
+    clientID: process.env.CLIENT_ID, ///create a .env file in the root of the project and add your google oauth client_id and client_secret
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://iotvts.herokuapp.com/auth/google/IoTVTS",
+    callbackURL: "https://yourProjectSite/auth/google/yourProjectNameforGoogleoAuth",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-  },
+  
   function(accessToken, refreshToken, profile, cb) {
     email = profile._json.email;
     const emailref = email.slice(0, email.indexOf("."));
@@ -144,11 +144,15 @@ app.get("/login", function(req, res) {
   res.render("login");
 });
 
+//Change auth/google GET URL to your own
+
 app.get("/auth/google",
   passport.authenticate("google", {
     scope: ["profile", "email"]
   })
 );
+
+//Change auth/google GET URL to your own
 
 app.get("/auth/google/IoTVTS",
   passport.authenticate('google', {
