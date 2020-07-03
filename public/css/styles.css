@@ -1,0 +1,43 @@
+body {
+  background-color: #E8ECEF;
+}
+
+.statCard {
+  background-color: grey;
+  margin: 30px;
+  padding: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+h2 {
+  background-color: white;
+  padding: 20px;
+  font-size: 2rem;
+}
+
+.centered {
+    padding-top: 15rem;
+    text-align: center;
+}
+
+.statCard p {
+  color: white;
+  padding: 20px;
+}
+
+.b {
+  padding-top: 5px;
+  margin-bottom: 20px;
+
+}
+
+.map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
